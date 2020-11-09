@@ -13,7 +13,7 @@ app.use(function (req, res, next) {
 
 app.use('/',router)
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening at http://localhost:${port}
                 localhost:3000/palace => get all palace
                 localhost:3000/palace/:id => get palace by id            
