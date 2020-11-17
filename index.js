@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 8000
 const router = require('./routers/router')
+
+app.use(express.urlencoded()); app.use(express.json());
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", '*');
@@ -15,7 +17,7 @@ app.use('/',router)
 
 app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening at http://localhost:${port}
-                localhost:3000/palace => get all palace
-                localhost:3000/palace/:id => get palace by id            
+                localhost:8000/palace => get all palace
+                localhost:8000/palace/:id => get palace by id            
               `)
 })
