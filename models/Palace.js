@@ -207,11 +207,11 @@ let fakePalace =  [
     },
     {
         "id": 21,
-        "name": "Lotte Rạp chiếu phim Landmark",
+        "name": "Rạp chiếu phim Lotte Landmark",
         "cost": 50000,
         "type": "Rạp chiếu phim",
         "address": "Tầng 5&6 Keangnam Landmark Tower, Phạm Hùng, ĐTM Cầu Giấy, X.Mễ Trì, Q.Nam Từ Liêm, Hà Nội",
-        "image": "https://toplist.vn/images/800px/lotte-Rạp chiếu phim-landmark-218326.jpg",
+        "image": "https://media.tieudungplus.vn/media/uploaded/7/2015/07/11/Bang-gia-ve-xem-phim-rap-Lotte-o-Ha-Noi.jpg",
         "description": "Nằm khá xa trung tâm nhưng Lotte Rạp chiếu phim Landmark vẫn cực kì hút khách bởi cụm rạp chiếu phim này nằm trong tòa nhà KeangNam Landmark – tòa nhà cao nhất Hà Nội. Được xây dựng theo công nghệ của người Hàn Quốc nên không có gì lạ khi Lotte Rạp chiếu phim mang đậm phong cách Hàn Quốc với lối thiết kế sang trọng, với những phòng chờ, quầy bán vé đa dạng, trang thiết bị được đầu tư hiện đại.",
         "vote": 5
     },
