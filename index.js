@@ -37,23 +37,40 @@ app.listen(process.env.PORT || port, () => {
               `)
 })
 
+const {MongoClient} = require('mongodb');
+const uri = "mongodb+srv://ailavip1st:Optimus2310@cluster0.gj2pf.mongodb.net/<dbname>?retryWrites=true&w=majority"
+
+const client = new MongoClient(uri);
+
 const db = require("./models");
 const dbConfig = require("./config/db.config")
 const Role = db.role;
 
-db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => {
-    console.log("Successfully connect to MongoDB.");
-    initial();
-  })
-  .catch(err => {
-    console.error("Connection error", err);
-    process.exit();
-  });
+db.mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }).then(() => {
+  console.log("Successfully connect to MongoDB.");
+  initial();
+})
+.catch(err => {
+  console.error("Connection error", err);
+  process.exit();
+});;
+
+// db.mongoose
+//   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   })
+//   .then(() => {
+//     console.log("Successfully connect to MongoDB.");
+//     initial();
+//   })
+//   .catch(err => {
+//     console.error("Connection error", err);
+//     process.exit();
+//   });
 
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
