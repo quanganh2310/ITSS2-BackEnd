@@ -6,10 +6,10 @@ let createBooking = (req, res) => {
     let booking = {
         id: "",
         username: req.body.name,
-        userPhoneNumber: req.body.phone_number,
+        userPhoneNumber: req.body.phoneNumber,
         time: req.body.time,
         date: req.body.date,
-        peopleNumber: req.body.people_number,
+        peopleNumber: req.body.peopleNumber,
         placeID:  req.body.placeID,
         placeName:  req.body.placeName,
         placeImage: req.body.placeImage,

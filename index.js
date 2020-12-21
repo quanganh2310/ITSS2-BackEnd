@@ -6,6 +6,7 @@ const app = express()
 const port = 8000
 const router = require('./routers/router')
 
+app.use(cors())
 // var corsOptions = {
 //   origin: "http://localhost:8000"
 // };
@@ -21,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded()); app.use(express.json());
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Origin", 'http://localhost:3000');
     res.header('Access-Control-Allow-Credentials', 'true')
     res.header("Access-Control-Allow-Headers", "X-PINGOTHER, Content-Type");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS");
@@ -110,3 +111,6 @@ function initial() {
 
 require('./routers/auth')(app);
 require('./routers/user')(app);
+require('./routers/order')(app);
+require('./routers/presentOrder')(app);
+require('./routers/comboOrder')(app);
