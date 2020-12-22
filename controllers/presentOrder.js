@@ -37,48 +37,31 @@ exports.create = (req, res) => {
   });
 };
 
-// exports.signin = (req, res) => {
-//   User.findOne({
-//     username: req.body.username
-//   })
-//     .populate("roles", "-__v")
-//     .exec((err, user) => {
-//       if (err) {
-//         res.status(500).send({ message: err });
-//         return;
-//       }
+exports.listAll = (req, res) => {
+  PresentOrder.find({}, (err, orders) => {
+    if (err) {
+      res.status(500).send({ success : 0, message : "Failed! Please try again" });
+      return;
+    }
 
-//       if (!user) {
-//         return res.status(404).send({ message: "User Not found." });
-//       }
+    res.status(201).send({success:1, message: "All orders is listed", orders: orders });
+  });
+}
 
-//       var passwordIsValid = bcrypt.compareSync(
-//         req.body.password,
-//         user.password
-//       );
-
-//       if (!passwordIsValid) {
-//         return res.status(401).send({
-//           accessToken: null,
-//           message: "Invalid Password!"
-//         });
-//       }
-
-//       var token = jwt.sign({ id: user.id }, config.secret, {
-//         expiresIn: 86400 // 24 hours
-//       });
-
-//       var authorities = [];
-
-//       for (let i = 0; i < user.roles.length; i++) {
-//         authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
-//       }
-//       res.status(200).send({
-//         id: user._id,
-//         username: user.username,
-//         email: user.email,
-//         roles: authorities,
-//         accessToken: token
-//       });
-//     });
-// };
+exports.editStatus = (req, res) => {
+  PresentOrder.findById(req.body.orderID, (err, order) => {
+      if (err) {
+        res.status(500).send({ success : 0, message : "Failed! Please try again" });
+        return;
+      }
+      if (order.status === "processing") {
+        order.status= "successful"
+      }
+      else {
+        order.status = "processing"
+      }
+      order.save().then(result => {
+        res.status(201).send({success:1, message: "successfully!", result: result });
+      })
+  })
+}

@@ -19,5 +19,15 @@ module.exports = function(app) {
     controller.create
   );
 
+  app.get(
+    "/api/presentOrder/getAll",
+    controller.listAll
+  );
+
+  app.put(
+    "/api/presentOrder/updateStatus",
+    controller.editStatus
+  );
+
 //   app.post("/api/auth/signin", controller.signin);
 };
