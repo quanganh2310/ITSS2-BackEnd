@@ -114,3 +114,5 @@ require('./routers/user')(app);
 require('./routers/order')(app);
 require('./routers/presentOrder')(app);
 require('./routers/comboOrder')(app);
+require('./routers/comment')(app);
+require('./routers/presentComment')(app);

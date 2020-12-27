@@ -48,6 +48,19 @@ exports.listAll = (req, res) => {
   });
 }
 
+exports.listAllOrderOfUser = (req, res) => {
+  PresentOrder.find({
+      userID: req.params.id
+  }, (err, orders) => {
+    if (err) {
+      res.status(500).send({ success : 0, message : "Failed! Please try again" });
+      return;
+    }
+  
+    res.status(201).send({success:1, message: "All orders is listed", orders: orders });
+  });
+}
+
 exports.editStatus = (req, res) => {
   PresentOrder.findById(req.body.orderID, (err, order) => {
       if (err) {
@@ -64,4 +77,17 @@ exports.editStatus = (req, res) => {
         res.status(201).send({success:1, message: "successfully!", result: result });
       })
   })
+}
+
+exports.deleteOrder = (req, res) => {
+  PresentOrder.findOneAndRemove({
+    _id: req.body.orderID
+  }, (err, order) => {
+    if (err) {
+      res.status(500).send({ success : 0, message : "Failed! Please try again" });
+      return;
+    }
+
+    res.status(201).send({success:1, message: "Comment has been deleted" });
+  });
 }

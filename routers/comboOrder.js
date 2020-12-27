@@ -24,9 +24,19 @@ module.exports = function(app) {
     controller.listAll
   );
 
+  app.get(
+    "/api/comboOrder/getAllOrderOfUser/:id",
+    controller.listAllOrderOfUser
+  );
+
   app.put(
     "/api/comboOrder/updateStatus",
     controller.editStatus
+  );
+
+  app.put(
+    "/api/comboOrder/delete",
+    controller.deleteOrder
   );
 
 //   app.post("/api/auth/signin", controller.signin);

@@ -10,6 +10,8 @@ db.user = require("./user");
 db.role = require("./role");
 db.presentOrder = require("./presentOrder");
 db.comboOrder = require("./comboOrder");
+db.comment = require("./comment");
+db.presentComment = require("./presentComment");
 
 db.ROLES = ["user", "admin", "moderator"];
 

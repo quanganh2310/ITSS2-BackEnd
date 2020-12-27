@@ -29,7 +29,7 @@ let fakeCombo =  [
     {
         "id": "4",
         "name": "PHIẾU QUÀ TẶNG OEDO VND100,000",
-        "image": "https://lh3.googleusercontent.com/proxy/_bOkpPz_OwXAecTpAk6AYQwLrEg3RrWhpHFGP4KD_4sdm8Kxs_MmB5fB8MhD1bK-ui_pVGXYQituqOzhZjvs7JwYQWK9sz1Vk3B5_3YVFAI0tJ2bgMagfPu3MRlC2XzTikRKJYlPMYa0osIuRb1qUYxVnWcWX9nwCtsbNhavFv89_YiXv-Y",
+        "image": "https://lh3.googleusercontent.com/proxy/IpxaK4ygkjczyse4Z2JOKKXlVeR6orspL5Q7120JOt0A0c_iXNR1IdrovQ_rrcRZWBsTGbLtxqcqwX1ZV2tomODQVTi-jvv8_Jq_6zCcsv9thLLselPgD0Oxqy5hgA1k_CJP3BbYzVyjDfdjg5eJczkUcc_yPA4PAq-OAryb9AqMcYIVI75d6qBmi3s",
         "type": "Giáng sinh",
         "description": "Tập trung 6 nhà hàng Nhật từ đường phố đến nhà hàng sang trọng, Oedo Alley đang là địa điểm ăn uống để thực khách có thể thỏa thích trải nghiệm các món ngon Nhật Bản. Trải nghiệm Oedo Alley ngay bằng phiếu quà tặng 100.000 đồng chỉ với 25.000 điểm Rewards+.",
         "shop": "Saigon Centre",

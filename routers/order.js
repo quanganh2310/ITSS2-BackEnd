@@ -24,9 +24,19 @@ module.exports = function(app) {
     controller.listAll
   );
 
+  app.get(
+    "/api/order/getAllOrderOfUser/:id",
+    controller.listAllOrderOfUser
+  );
+
   app.put(
     "/api/order/updateStatus",
     controller.editStatus
+  );
+
+  app.put(
+    "/api/order/delete",
+    controller.deleteOrder
   );
 
 //   app.post("/api/auth/signin", controller.signin);

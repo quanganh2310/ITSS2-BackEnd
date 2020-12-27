@@ -41,8 +41,21 @@ exports.listAll = (req, res) => {
       res.status(201).send({success:1, message: "All orders is listed", orders: orders });
     });
   }
+
+exports.listAllOrderOfUser = (req, res) => {
+  ComboOrder.find({
+      userID: req.params.id
+  }, (err, orders) => {
+    if (err) {
+      res.status(500).send({ success : 0, message : "Failed! Please try again" });
+      return;
+    }
   
-  exports.editStatus = (req, res) => {
+    res.status(201).send({success:1, message: "All orders is listed", orders: orders });
+  });
+  }
+  
+exports.editStatus = (req, res) => {
     ComboOrder.findById(req.body.orderID, (err, order) => {
         if (err) {
           res.status(500).send({ success : 0, message : "Failed! Please try again" });
@@ -59,3 +72,16 @@ exports.listAll = (req, res) => {
         })
     })
   }
+
+exports.deleteOrder = (req, res) => {
+    ComboOrder.findOneAndRemove({
+      _id: req.body.orderID
+    }, (err, order) => {
+      if (err) {
+        res.status(500).send({ success : 0, message : "Failed! Please try again" });
+        return;
+      }
+  
+      res.status(201).send({success:1, message: "Comment has been deleted" });
+   });
+}

@@ -1,88 +1,52 @@
 const config = require("../config/auth.config");
 const db = require("../models");
-const Order = db.order;
+const Comment = db.comment;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.create = (req, res) => {
-  const order = new Order({
+  const comment = new Comment({
     userID: req.body.userID,
     userEmail: req.body.userEmail,
     username: req.body.username,
-    name: req.body.name,
-    phoneNumber: req.body.phoneNumber,
-    time: req.body.time,
-    date: req.body.date,
-    peopleNumber: req.body.peopleNumber,
     placeID:  req.body.placeID,
-    placeName:  req.body.placeName,
-    placeImage: req.body.placeImage,
-    placeAddress:  req.body.placeAddress,
-    bookingAt: req.body.bookingAt,
-    status: req.body.status,
+    avatar: req.body.avatar,
+    createdAt: req.body.bookingAt,
+    content: req.body.content,
   });
 
-  console.log(req.body.placeID);
+  console.log(req.body.content);
 
-  order.save((err, order) => {
+  comment.save((err, comment) => {
     if (err) {
       res.status(500).send({ success : 0, message : "Failed! Please try again" });
       return;
     }
 
-    res.status(201).send({success:1, message: "Order was created successfully!" });
+    res.status(201).send({success:1, message: "Comment was created successfully!" });
 
     
   });
 };
 
-exports.listAll = (req, res) => {
-  Order.find({}, (err, orders) => {
+exports.listAllCmtOfPlace = (req, res) => {
+  Comment.find({
+    placeID: req.params.id
+  }, (err, comments) => {
     if (err) {
       res.status(500).send({ success : 0, message : "Failed! Please try again" });
       return;
     }
 
-    res.status(201).send({success:1, message: "All orders is listed", orders: orders });
+    res.status(201).send({success:1, message: "All comments is listed", comments: comments });
   });
 }
 
-exports.listAllOrderOfUser = (req, res) => {
-  Order.find({
-    userID: req.params.id
-}, (err, orders) => {
-  if (err) {
-    res.status(500).send({ success : 0, message : "Failed! Please try again" });
-    return;
-  }
-
-  res.status(201).send({success:1, message: "All orders is listed", orders: orders });
-});
-}
-
-exports.editStatus = (req, res) => {
-  Order.findById(req.body.orderID, (err, order) => {
-      if (err) {
-        res.status(500).send({ success : 0, message : "Failed! Please try again" });
-        return;
-      }
-      if (order.status === "processing") {
-        order.status= "successful"
-      }
-      else {
-        order.status = "processing"
-      }
-      order.save().then(result => {
-        res.status(201).send({success:1, message: "successfully!", result: result });
-      })
-  })
-}
-
-exports.deleteOrder = (req, res) => {
-  Order.findOneAndRemove({
-    _id: req.body.orderID
-  }, (err, order) => {
+exports.deleteCmt = (req, res) => {
+  Comment.findOneAndRemove({
+    _id: req.params.id
+  }, (err, comment) => {
     if (err) {
       res.status(500).send({ success : 0, message : "Failed! Please try again" });
       return;
@@ -90,6 +54,24 @@ exports.deleteOrder = (req, res) => {
 
     res.status(201).send({success:1, message: "Comment has been deleted" });
   });
+}
+
+exports.editStatus = (req, res) => {
+  Comment.findById(req.body.orderID, (err, comment) => {
+      if (err) {
+        res.status(500).send({ success : 0, message : "Failed! Please try again" });
+        return;
+      }
+      if (comment.status === "processing") {
+        comment.status= "successful"
+      }
+      else {
+        comment.status = "processing"
+      }
+      comment.save().then(result => {
+        res.status(201).send({success:1, message: "successfully!", result: result });
+      })
+  })
 }
 
 // exports.signin = (req, res) => {

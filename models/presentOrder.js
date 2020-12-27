@@ -11,7 +11,7 @@ const PresentOrder = mongoose.model(
     phoneNumber: String,
     receiverName: String,
     receiverAddress: String,
-    receiverPhoneNumber: Number,
+    receiverPhoneNumber: String,
     presentID: String,
     presentName: String,
     presentImage: String,
